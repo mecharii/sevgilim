@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aşkıma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            background: linear-gradient(to bottom, #ffe4e1, #ffcad4);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .container {
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            max-width: 90%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #b03a48;
+            font-weight: bold;
+            word-wrap: break-word;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #d14757;
+            font-weight: 500;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out 1.5s forwards;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 1.2rem;
+            animation: floatUp 4s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-150px); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .heart {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gülüşünde bulduğum huzur hiç bir yerde yok.</h1>
+        <h2>İyi ki sen sevgilimm. 💖</h2>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            let x = Math.random() * window.innerWidth;
+            let y = window.innerHeight;
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 800);
+    </script>
+</body>
+</html>
